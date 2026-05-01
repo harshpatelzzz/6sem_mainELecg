@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    ports: ["8000:8000"]
+    volumes: ["./data:/app/data","./checkpoints:/app/checkpoints"]
+    env_file: [".env"]
+    depends_on: [redis, mlflow]
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    ports: ["5173:80"]
+    depends_on: [backend]
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    ports: ["5000:5000"]
+    command: mlflow server --host 0.0.0.0

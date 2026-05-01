@@ -1,0 +1,27 @@
+fastapi
+uvicorn[standard]
+numpy
+scipy
+neurokit2
+PyWavelets
+torch
+torchvision
+torchaudio
+torch-geometric
+scikit-learn
+matplotlib
+pandas
+pydantic
+pydantic-settings
+mlflow
+redis
+wfdb
+structlog
+python-multipart
+higher
+pytest
+pytest-cov
+httpx
+
+# PyG install note (CPU):
+# pip install torch-geometric -f https://data.pyg.org/whl/torch-2.3.0+cpu.html
