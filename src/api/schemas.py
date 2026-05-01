@@ -1,11 +1,12 @@
 """API schemas."""
 from __future__ import annotations
 from datetime import datetime
+from typing import Any
 from pydantic import BaseModel
 class Envelope(BaseModel):
     """Consistent API response envelope."""
     status: str
-    data: dict
+    data: Any
     message: str=""
 class AnalysisResponse(BaseModel):
     """ECG analysis response payload."""
@@ -21,3 +22,4 @@ class AnalysisResponse(BaseModel):
     risk_level: str
     alert: bool
     risk_trajectory: list[dict]
+    ecg_signal: list[float] = []
